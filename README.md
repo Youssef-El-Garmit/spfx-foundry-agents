@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/chat.png" alt="Chatting with an Azure AI Foundry agent inside a SharePoint page: streamed answer with citations and attachments" width="900" />
+  <img src="docs/images/chat.png" alt="Foundry Agents in a SharePoint page: a sales agent connected to Odoo lists overdue invoices, cites its sources and prepares reminder drafts in Outlook with the user's own permissions" width="900" />
 </p>
 
 ---
@@ -69,13 +69,23 @@ Copilot is great for personal productivity. But the agents your organization bui
 - Works on SharePoint pages, full-page apps, Teams tabs and Teams mobile
 - English and French UI
 
-## Screenshots
+## Use cases
 
-| Start from suggested prompts | Several agents in one web part |
+One web part, as many agents as you need. Each agent lives in your Azure AI Foundry project, is connected to your own tools (ERP, CRM, calendars, SharePoint libraries) and is shown only to the people who need it. A few examples:
+
+| **Sales on Odoo** — overdue invoices, then reminder drafts in Outlook | **CRM** — prepare a client meeting from the opportunity, emails and last Teams recap |
 |---|---|
-| <img src="docs/images/starter.png" alt="Starter screen with suggested prompts" /> | <img src="docs/images/agents.png" alt="Web part settings listing the configured agents" /> |
-| **Control what each agent can do** | **The same web part in Microsoft Teams** |
-| <img src="docs/images/edit-agent.png" alt="Agent edit dialog: endpoint, audience, icon, history, attachments, prompts" /> | <img src="docs/images/teams.png" alt="Foundry Agents as a Teams channel tab" /> |
+| <img src="docs/images/case-odoo.png" alt="Odoo sales agent listing invoices more than 60 days overdue and preparing three reminder drafts in Outlook" /> | <img src="docs/images/case-crm.png" alt="CRM agent preparing a meeting: opportunity stage, last email, change of decision maker, note added to the opportunity" /> |
+| **Medical practice** — a follow-up slot that respects the care protocol | **HR** — remote-work policy, leave balance and a pre-filled request |
+| <img src="docs/images/case-medical.png" alt="Medical secretary agent finding a diabetes follow-up slot and holding it pending confirmation" /> | <img src="docs/images/case-rh.png" alt="HR assistant answering about remote work and leave, then pre-filling a leave request" /> |
+| **Legal** — tacit renewals and notice periods, with Planner reminders | **IT support** — internal procedure first, then a ticket with the right details |
+| <img src="docs/images/case-juridique.png" alt="Legal agent listing supplier contracts with tacit renewal and notice deadlines" /> | <img src="docs/images/case-it.png" alt="IT support agent answering from the internal procedure and creating a ticket" /> |
+
+| **The same web part in Microsoft Teams** | **Control what each agent can do** |
+|---|---|
+| <img src="docs/images/teams.png" alt="Foundry Agents as a Teams tab with the CRM agent" /> | <img src="docs/images/config.png" alt="Agent settings: Foundry project endpoint, audience groups, allowed actions and blocked DELETE method" /> |
+
+<sub>Illustrations built with Fluent UI and sample data (company names are fictitious). The web part ships in English and French.</sub>
 
 Watch the demo: [How to embed Azure AI Foundry agents in SharePoint & Microsoft Teams with SPFx](https://www.youtube.com/watch?v=nfPgAZ7pu34).
 
