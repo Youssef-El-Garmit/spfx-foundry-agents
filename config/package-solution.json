@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Foundry Agents by Nemoura",
+    "id": "3731d80e-0ae0-462b-8f80-e68b332e4be6",
+    "version": "1.3.6.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Némoura",
+      "websiteUrl": "https://nemoura.com/products/foundry-agents/",
+      "privacyUrl": "https://nemoura.com/products/privacy-policy/",
+      "termsOfUseUrl": "https://nemoura.com/products/terms-of-use/",
+      "mpnId": "7074677"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Azure Machine Learning Services",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.ReadWrite.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "Chat with your Azure AI Foundry agents in SharePoint and Teams, signed in with your Microsoft 365 account.",
+        "fr-FR": "Discutez avec vos agents Azure AI Foundry dans SharePoint et Teams, avec votre compte Microsoft 365."
+      },
+      "longDescription": {
+        "default": "Foundry Agents by Némoura brings the agents your organization builds in Azure AI Foundry into SharePoint pages, Teams tabs and the Teams personal app. Users chat with streamed answers, conversation history, citations, file attachments, voice dictation and a document preview panel. The web part calls Azure AI Foundry directly with the signed-in user's Microsoft Entra identity: there is no Némoura backend and Némoura never receives your data. Administrators configure one or more agents (endpoint, agent name, icon, suggested prompts, audience groups, optional SharePoint/Microsoft Graph function calls with blocked HTTP methods). Requires an Azure subscription with an Azure AI Foundry project and the Azure AI User role for users.",
+        "fr-FR": "Foundry Agents by Némoura apporte dans les pages SharePoint, les onglets Teams et l'application personnelle Teams les agents que votre organisation crée dans Azure AI Foundry. Les utilisateurs discutent avec des réponses en streaming, l'historique des conversations, des citations, des pièces jointes, la dictée vocale et un panneau d'aperçu des documents. Le composant appelle directement Azure AI Foundry avec l'identité Microsoft Entra de l'utilisateur connecté : aucun serveur Némoura, Némoura ne reçoit jamais vos données. Les administrateurs configurent un ou plusieurs agents (endpoint, nom d'agent, icône, suggestions, groupes d'audience, appels de fonctions SharePoint/Microsoft Graph optionnels avec méthodes HTTP bloquées). Nécessite un abonnement Azure avec un projet Azure AI Foundry et le rôle Azure AI User pour les utilisateurs."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Foundry Agents Feature",
+        "description": "The feature that activates elements of the Foundry Agents solution.",
+        "id": "f7f05a63-6b7d-4c37-8d96-a8c3c74f1155",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-foundry-agents.sppkg"
+  }
+}

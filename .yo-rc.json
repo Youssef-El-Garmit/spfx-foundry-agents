@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "20.19.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "spfx-foundry-agents",
+    "libraryId": "3731d80e-0ae0-462b-8f80-e68b332e4be6",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "SPFx.FoundryAgents",
+    "solutionShortDescription": "SPFx.FoundryAgents description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

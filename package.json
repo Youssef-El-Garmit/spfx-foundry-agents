@@ -1,0 +1,67 @@
+{
+  "name": "spfx-foundry-agents",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 < 23.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@azure/ai-projects": "^2.0.0-beta.1",
+    "@azure/core-auth": "^1.10.1",
+    "@fluentui-copilot/react-copilot": "0.30.3",
+    "@fluentui-copilot/react-copilot-chat": "0.13.2",
+    "@fluentui-copilot/react-copilot-nav": "^0.1.5",
+    "@fluentui/react-components": "^9.72.9",
+    "@fluentui/react-icons": "^2.0.316",
+    "@microsoft/sp-component-base": "1.21.1",
+    "@microsoft/sp-core-library": "1.21.1",
+    "@microsoft/sp-lodash-subset": "1.21.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.1",
+    "@microsoft/sp-property-pane": "1.21.1",
+    "@microsoft/sp-webpart-base": "1.21.1",
+    "@pnp/graph": "^4.18.0",
+    "@pnp/sp": "^4.18.0",
+    "clsx": "^2.1.1",
+    "copy-to-clipboard": "^3.3.3",
+    "date-fns": "^4.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-sanitize": "^6.0.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "scheduler": "^0.20.2",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.21.1",
+    "@microsoft/eslint-plugin-spfx": "1.21.1",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.21.1",
+    "@microsoft/sp-module-interfaces": "1.21.1",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/webpack-env": "~1.15.2",
+    "ajv": "^6.12.5",
+    "eslint": "8.57.1",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "gulp": "4.0.2",
+    "typescript": "~5.3.3"
+  },
+  "description": "Chat with your Azure AI Foundry agents in SharePoint and Microsoft Teams, signed in with Microsoft 365. No backend, no API keys.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nemoura-Labs/spfx-foundry-agents.git"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "foundry-agents-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/foundryAgents/FoundryAgentsWebPart.js",
+          "manifest": "./src/webparts/foundryAgents/FoundryAgentsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FoundryAgentsWebPartStrings": "lib/webparts/foundryAgents/loc/{locale}.js"
+  }
+}

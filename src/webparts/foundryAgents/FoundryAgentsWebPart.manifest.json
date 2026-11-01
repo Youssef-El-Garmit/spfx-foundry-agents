@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6c1bcae6-319e-4fa9-8716-b3adbc899353",
+  "alias": "FoundryAgentsWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+  "flexibleLayoutSizing": {
+    "supportsDynamicResizing": true
+  },
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced", "fr-FR": "Avancé" },
+    "title": { "default": "Foundry Agents", "fr-FR": "Foundry Agents" },
+    "description": {
+      "default": "Chat with your organization's Azure AI Foundry agents right on this page. Employees ask questions, get streamed answers with sources, attach files, dictate by voice and preview the documents the agent works on, signed in with their Microsoft 365 account (no third-party backend). For any team that wants an AI assistant on its intranet or in Teams: HR, legal, IT support, sales, operations. Requires an Azure AI Foundry project.",
+      "fr-FR": "Discutez avec les agents Azure AI Foundry de votre organisation directement sur cette page. Les collaborateurs posent leurs questions, obtiennent des réponses en streaming avec leurs sources, joignent des fichiers, dictent à la voix et prévisualisent les documents sur lesquels l'agent travaille, avec leur compte Microsoft 365 (aucun serveur tiers). Pour toute équipe qui veut un assistant IA sur son intranet ou dans Teams : RH, juridique, support IT, commerce, opérations. Nécessite un projet Azure AI Foundry."
+    },
+    "iconImageUrl": "https://nemoura.com/wp-content/uploads/assets/microsoft/SPFxFoundryAgents.png",
+    "imagePreviewUrl": "https://nemoura.com/wp-content/uploads/assets/microsoft/SPFxFoundryAgents.png",
+    "fullPageAppIconImageUrl": "https://nemoura.com/wp-content/uploads/assets/microsoft/SPFxFoundryAgents.png",
+    "properties": {
+      "agentsJson": "[]"
+    }
+  }]
+}

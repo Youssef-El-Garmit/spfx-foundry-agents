@@ -1,0 +1,21 @@
+.foundryAgents {
+  overflow: hidden;
+  padding: 0;
+  height: 100%;
+  color: var(--bodyText, #323130);
+  width: 100%;
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.docChip {
+  margin: 4px 0 8px 44px;
+}

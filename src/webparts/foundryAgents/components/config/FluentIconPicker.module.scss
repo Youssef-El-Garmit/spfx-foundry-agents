@@ -1,0 +1,59 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  min-width: max-content;
+  padding-top: 6px; /* align with input baseline */
+}
+
+.comboboxWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  /* allow inline listbox to overflow downward without clipping */
+  overflow: visible;
+}
+
+.preview {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-top: 4px;
+  color: var(--colorNeutralForeground2, #605e5c);
+}
+
+.combobox {
+  flex: 1;
+  min-width: 0;
+
+  /* Inline listbox: cap height, vertical scroll only */
+  :global(.fui-Listbox) {
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.optionContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+}

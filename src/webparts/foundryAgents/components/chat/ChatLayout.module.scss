@@ -1,0 +1,627 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.layoutWithRail {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.rail {
+  flex-shrink: 0;
+  width: 0;
+  overflow: hidden;
+  background: var(--colorNeutralBackground1, #fff);
+  transition: width 0.2s ease;
+  z-index: 99;
+
+  &[data-open='true'] {
+    width: 280px;
+  }
+}
+
+.rail[data-open='true'] {
+  border-right: 1px solid var(--colorNeutralStroke2, #e1dfdd);
+}
+
+.railInner {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  min-height: 0;
+}
+
+.railHeader {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 8px;
+  gap: 8px;
+}
+
+.railTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--colorNeutralForeground1, #242424);
+}
+
+.railSearchBox {
+  flex-shrink: 0;
+  margin: 0 12px 8px;
+
+  :global(.fui-SearchBox),
+  :global(.fui-Input) {
+    width: 100%;
+  }
+}
+
+.conversationsList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(100% - 10px);
+  margin: 5px;
+}
+
+.railScroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 8px 16px;
+  min-height: 0;
+  position: relative;
+}
+
+.railScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.railScroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.railScroll::-webkit-scrollbar-thumb {
+  background: var(--colorNeutralStroke1, #e1dfdd);
+  border-radius: 3px;
+}
+
+.railLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 8px;
+  color: var(--colorNeutralForeground3, #8a8886);
+  font-size: 12px;
+}
+
+.railEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 12px;
+  color: var(--colorNeutralForeground3, #8a8886);
+  font-size: 12px;
+  text-align: center;
+}
+
+.railEmptyIcon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: var(--colorNeutralForeground4, #c8c6c4);
+  flex-shrink: 0;
+}
+
+.conversationItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  gap: 2px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  padding-right: 5px;
+
+  &:hover {
+    background: var(--colorNeutralBackground1Hover, #f3f2f1);
+  }
+
+  &:hover .conversationDeleteBtn {
+    opacity: 1;
+  }
+
+  &:has(.conversationCard[data-selected='true']) {
+    background: var(--colorNeutralBackground1Selected, #e8f4fd);
+    border-color: var(--colorBrandStroke1, #0078d4);
+  }
+}
+
+.conversationNotificationDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.conversationDeleteBtn {
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  color: var(--colorNeutralForeground3, #605e5c);
+
+  &:hover {
+    color: var(--colorStatusDangerForeground1, #bc2f32);
+    opacity: 1;
+  }
+}
+
+.conversationLoadingSpinner {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: var(--colorNeutralForeground1, #242424);
+}
+
+.conversationCardTitle {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.conversationCardDate {
+  font-size: 11px;
+  color: var(--colorNeutralForeground3, #605e5c);
+  margin-top: 4px;
+}
+
+.sentinel {
+  height: 1px;
+  width: 100%;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+// Fluent UI <Skeleton> for the conversation rail load-more indicator.
+// Only layout here — Skeleton handles the wave animation.
+.railShimmer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.railShimmerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.railShimmerTitle {
+  width: 80%;
+}
+
+.railShimmerDate {
+  width: 42%;
+}
+
+// ── Messages wrapper blur-out while conversation is loading ──────────────────
+
+.messagesWrapper {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.messagesWrapper[data-conversation-loading='true'] {
+  filter: blur(4px);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+
+.mainColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--colorNeutralStroke2, #e1dfdd);
+  background: var(--colorNeutralBackground1, #fff);
+  min-height: 48px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copyReplyRow {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.messagesContainer {
+  flex: 1;
+  background-color: var(--colorNeutralBackground1, #faf9f8);
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.messagesWrapper {
+  /* Full-width scroller (scrollbar on the edge, like ChatGPT / Claude); the column is centred inside. */
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;   /* the SharePoint page does not scroll when the list hits its end */
+  overflow-anchor: none;          /* our own stick-to-bottom logic, no browser anchoring fights */
+  scrollbar-width: thin;
+  scrollbar-color: var(--colorNeutralStroke1, #d1d1d1) transparent;
+  outline: none;
+}
+
+.messagesColumn {
+  width: 100%;
+  max-width: min(760px, 95%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+  min-height: 100%;   /* lets the empty-state (agent name + suggestions) centre vertically */
+  box-sizing: border-box;
+}
+
+.messagesWrapper :global(.fai-CopilotMessage) {
+  padding: 12px 16px;
+  border-radius: 12px 12px 4px 12px;
+  max-width: 90%;
+  align-self: flex-start;
+}
+
+.messagesWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messagesWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messagesWrapper::-webkit-scrollbar-thumb {
+  background: var(--colorNeutralStroke1, #edebe9);
+  border-radius: 4px;
+}
+
+.chatInputArea {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  background: var(--colorNeutralBackground1, #faf9f8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputWrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: min(760px, 95%);
+  margin: 0.5rem 1rem 0.75rem;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--colorBrandStroke1, #0078d4);
+  box-shadow: var(--shadow8, 0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.inputWrapper :global(.fui-ChatInput) {
+  max-height: 120px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+}
+
+.inputWrapper :global(.fui-ChatInput) :global(textarea) {
+  background: transparent;
+  min-height: 40px;
+}
+
+/* Style the built-in send button to match subtle buttons (from foundry-webapp) */
+.inputWrapper :global(.fui-ChatInput) :global(button) {
+  color: var(--colorNeutralForeground2, #605e5c);
+  background: transparent !important;
+  border: none;
+}
+
+.inputWrapper :global(.fui-ChatInput) :global(button:hover:enabled) {
+  color: var(--colorNeutralForeground2Hover, #424241);
+  background: var(--colorSubtleBackgroundHover, #f3f2f1) !important;
+}
+
+.inputWrapper :global(.fui-ChatInput) :global(button:active:enabled) {
+  color: var(--colorNeutralForeground2Pressed, #242424);
+  background: var(--colorSubtleBackgroundPressed, #edebe9) !important;
+}
+
+.inputWrapper :global(.fui-ChatInput) :global(button:disabled) {
+  color: var(--colorNeutralForegroundDisabled, #a19f9d);
+  background: transparent !important;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* CopilotMessage progress bar: use theme brand colors (inherits from FluentProvider) */
+.messagesWrapper :global(.fai-CopilotMessage__progress) :global(div), .attachmentProgressBar {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--colorBrandStroke1, var(--colorBrandBackground1, #0078d4)) 35%,
+    var(--colorBrandStroke2, var(--colorBrandBackground2, #106ebe)) 70%,
+    var(--colorBrandStroke1, var(--colorBrandBackground1, #0078d4)) 92%,
+    transparent
+  ) !important;
+}
+
+.loadingPlaceholder {
+  text-align: center;
+  color: var(--colorNeutralForeground2, #605e5c);
+}
+
+.toolLoaderWrap {
+  margin: 0 8% 8px;
+}
+
+.thinkingLabel {
+  font-size: 13px;
+  color: var(--colorNeutralForeground2, #605e5c);
+  padding: 12px 16px;
+}
+
+// ── Message-area infinite scroll (top sentinel + shimmer) ─────────────────────
+
+.msgTopSentinel {
+  width: 100%;
+  flex-shrink: 0;
+  min-height: 2px;
+  display: flex;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+// Fluent UI <Skeleton> wrapper — provides built-in shimmer wave animation.
+// Only layout here, no custom animation.
+.msgLoadingShimmer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 8px;
+  width: 100%;
+}
+
+.msgShimmerAssistantRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.msgShimmerLines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// Medium-width text line (~75%)
+.msgShimmerLineMd {
+  width: 75%;
+}
+
+// Short text line (~45%)
+.msgShimmerLineSm {
+  width: 45%;
+}
+
+// Right-aligned user bubble (~45% width, pill shape)
+.msgShimmerUserRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.msgShimmerUserBubble {
+  width: 45%;
+  border-radius: 16px;
+}
+
+.attachmentErrorIcon {
+  color: var(--colorPaletteRedForeground1, #d13438);
+  flex-shrink: 0;
+}
+
+.agentSelectorTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  background: var(--colorNeutralBackground1, #fff);
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 36px;
+}
+
+.agentSelectorTrigger:hover {
+  background: var(--colorNeutralBackground1Hover, #f3f2f1);
+  border-color: var(--colorNeutralStroke1Hover, #e1dfdd);
+}
+
+.agentHeaderSingle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* ── Document panel (right) ─────────────────────────────────────────────── */
+.mainRow {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.rightPanel {
+  position: relative;
+  z-index: 1;   /* above the decorative waves */
+  flex: 0 0 48%;
+  min-width: 360px;
+  max-width: 900px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: 1;
+  }
+}
+
+/* Narrow hosts: the document takes the whole width over the chat. */
+@media (max-width: 900px) {
+  .mainRow[data-panel='true'] {
+    position: relative;
+  }
+
+  .rightPanel {
+    position: absolute;
+    inset: 0;
+    max-width: none;
+    min-width: 0;
+    z-index: 100;
+  }
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.micListening {
+  animation: micPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 49, 75, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(196, 49, 75, 0); }
+}
+
+/* Soft fade between the messages and the input (text fades out instead of being cut). */
+.chatInputArea::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 8px;
+  bottom: 100%;
+  height: 24px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--colorNeutralBackground1, #faf9f8));
+}
+
+/* "Back to bottom" button, centred just above the input, fades in once the user scrolled up. */
+.jumpSlot {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 20;
+}
+
+.jumpSlot[data-visible='true'] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.jumpButton {
+  background: var(--colorNeutralBackground1, #fff) !important;
+  border: 1px solid var(--colorNeutralStroke2, #e0e0e0) !important;
+  box-shadow: var(--shadow8, 0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jumpSlot { transition: none; }
+}
+
+/* Notice shown above the empty state (e.g. a conversation Foundry no longer has). */
+.emptyStateNotice {
+  margin-top: 16px;
+}

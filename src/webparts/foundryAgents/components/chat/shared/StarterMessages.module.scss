@@ -1,0 +1,48 @@
+.zeroprompt {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-width: 800px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.welcome,
+.caption {
+  text-align: center;
+}
+
+.caption {
+  max-width: 600px;
+  color: var(--colorNeutralForeground2, #605e5c);
+}
+
+.promptList {
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.promptText {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  word-break: break-word;
+  color: var(--colorNeutralForeground1, #242424);
+}
