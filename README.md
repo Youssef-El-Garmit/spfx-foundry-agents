@@ -39,7 +39,15 @@ Copilot is great for personal productivity. But the agents your organization bui
 | **Secrets** | None. No API key is stored anywhere | API keys to store, rotate and protect |
 | **Permissions** | The user's own rights (Azure AI roles, SharePoint, Graph) | Often a powerful service account |
 | **Infrastructure to run** | None: a client-side web part | A server, a database, updates, monitoring |
+| **Searching your documents** | Microsoft 365 search, already indexed, with each user's rights | Documents copied into an index to build and keep in sync |
+| **Business tools** | Any MCP server: Odoo, CRM, ERP, your APIs | Vendor-specific connectors |
 | **Code** | Open source, auditable by your security team | Often closed |
+
+### Three things that set it apart
+
+1. **Search Microsoft 365 without re-indexing anything.** Your agents can call the **Microsoft Search API** through Microsoft Graph, with the signed-in user's permissions. SharePoint and OneDrive content is already indexed by Microsoft: no vector database to fill, no sync pipeline to maintain, results always up to date, and every user only finds what they are allowed to see.
+2. **Plug in any MCP server.** Odoo, a CRM, an ERP, a line-of-business tool or your own API: your Foundry agents use the remote **MCP (Model Context Protocol)** servers you choose. The web part handles each user's OAuth sign-in, shows the connection status of every server and displays tool calls live during the answer.
+3. **Act with the user's own rights, safely.** Function calls returned by the agent run **in the browser** against Microsoft Graph or SharePoint with delegated permissions. Off by default; `DELETE` and `PATCH` blocked until you allow them.
 
 **Sovereignty by design.** Conversations go from the user's browser to *your* Azure AI Foundry project, with *your* users' Microsoft identities. Nothing passes through Némoura or any other third party, and no data leaves your Microsoft 365 and Azure environment.
 
@@ -61,8 +69,10 @@ Copilot is great for personal productivity. But the agents your organization bui
 
 **Act, with the user's own permissions** (delegated execution model)
 - An agent can return a **function call** (`{ request: { path, method, query, body } }`). The web part executes it **in the browser** against **Microsoft Graph** or the current **SharePoint** site, using the user's delegated permissions, and sends the result back to the agent
-- Per agent: turn function calls on or off, and **block HTTP methods** (e.g. `DELETE`)
-- **MCP connections**: OAuth consent links for the MCP tools your Foundry agents use
+- Per agent: turn function calls on or off (off by default), and **block HTTP methods** (`DELETE` and `PATCH` blocked by default)
+- Typical use: `POST /search/query` on Microsoft Graph to search SharePoint and OneDrive with the user's rights, without building your own index
+- **MCP connections**: per-user OAuth sign-in for the MCP servers your Foundry agents use, connection status and tool count per server, live display of tool calls
+- **Word documents** created or edited by MCP document tools open in the side panel, next to the conversation
 
 **Fit in**
 - Follows the **SharePoint page theme** and the **Teams theme** (light, dark, high contrast)
@@ -199,7 +209,7 @@ Contact: **[ktifa.com](https://ktifa.com/agents-ia-sharepoint-teams)** (Youssef 
 
 ### En français
 
-**Foundry Agents** affiche dans SharePoint et Teams les agents IA que vous créez dans Azure AI Foundry. Vos utilisateurs s'y connectent avec leurs comptes Microsoft 365. Il n'y a ni serveur, ni clé d'API, ni service tiers : les échanges restent dans votre tenant Microsoft et Azure. Le projet est open source (MIT). Installation clé en main et agents sur mesure : [ktifa.com](https://ktifa.com/agents-ia-sharepoint-teams).
+**Foundry Agents** affiche dans SharePoint et Teams les agents IA que vous créez dans Azure AI Foundry. Vos utilisateurs s'y connectent avec leurs comptes Microsoft 365. Il n'y a ni serveur, ni clé d'API, ni service tiers : les échanges restent dans votre tenant Microsoft et Azure. Vos agents cherchent dans SharePoint et OneDrive via la recherche Microsoft 365, sans rien réindexer et avec les droits de chacun ; ils se branchent sur n'importe quel serveur MCP (Odoo, CRM, ERP, vos API) ; ils agissent dans Microsoft 365 avec les droits de l'utilisateur. Le projet est open source (MIT). Installation clé en main et agents sur mesure : [ktifa.com](https://ktifa.com/agents-ia-sharepoint-teams).
 
 ## License
 
