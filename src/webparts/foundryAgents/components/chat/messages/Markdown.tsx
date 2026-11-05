@@ -125,6 +125,16 @@ const Link: Components['a'] = ({ href, children }) => {
   );
 };
 
+// Images (e.g. product pictures returned by MCP tools): compact thumbnail, opens the full image in a new tab.
+const Image: Components['img'] = ({ src, alt }) => {
+  if (!src) return null;
+  return (
+    <a href={src} target="_blank" rel="noopener noreferrer" className={styles.imageLink}>
+      <img src={src} alt={alt ?? ''} title={alt ?? ''} loading="lazy" className={styles.image} />
+    </a>
+  );
+};
+
 // Custom list components
 const UnorderedList: Components['ul'] = ({ children }) => {
   return <ul className={styles.list}>{children}</ul>;
@@ -205,6 +215,7 @@ const rehypeSanitizeConfig = [
 const baseComponents = {
   code: CodeBlock,
   a: Link,
+  img: Image,
   ul: UnorderedList,
   ol: OrderedList,
   li: ListItem,
